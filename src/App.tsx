@@ -1,12 +1,26 @@
-import React from 'react';
 import GlobalStyle from "./theme/globalStyles"
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Form from './components/Form';
 import Legend from './components/Legend';
-import { AppText, AppWrapper } from "./styles"
+import { AppText, AppWrapper, CardWrapper } from "./styles"
+import useFetch from "./hooks/useFetch";
+import Card from './components/Card';
+import { useContext, useState } from "react"
+import { FilterContext } from "./providers/contexts/filterContext";
+import useFilter from "./hooks/useFilter";
+
 
 function App() {
+
+  const { shiftState, search } = useContext(FilterContext);
+  const { data } = useFetch(
+    "https://test-frontend-developer.s3.amazonaws.com/data/locations.json"
+  );
+
+  const { nonRepeatedMorningGyms, nonRepeatedAfternoonGyms, nonRepeatedNightGyms } = useFilter(data)
+
+
   return (
     <AppWrapper>
       <GlobalStyle />
@@ -20,6 +34,33 @@ function App() {
       </AppText>
       <Form />
       <Legend />
+      {search ? (
+        <CardWrapper>
+          {shiftState === "manhã" ? (
+            <>
+              {nonRepeatedMorningGyms.map(item => {
+                return <Card key={Math.random()} data={item} />
+              })}
+            </>
+          ) : shiftState === "tarde" ? (
+            <>
+              {nonRepeatedAfternoonGyms.map(item => {
+                return <Card key={Math.random()} data={item} />
+              })}
+            </>
+          ) : (
+            <>
+              {nonRepeatedNightGyms.map(item => {
+                return <Card key={Math.random()} data={item} />
+              })}
+            </>
+          )}
+
+        </CardWrapper>
+      ) : (
+        null
+      )}
+
       <Footer />
     </AppWrapper>
   );
