@@ -32,3 +32,18 @@ export const AppText = styled.div`
     }
     max-width: 1000px;
 `
+
+export const CardWrapper = styled.div`
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+max-width: 1000px;
+width: 100%;
+gap: 10px;
+margin-bottom: 50px;
+
+@media (min-width: 768px){
+    gap: 50px;
+}
+`

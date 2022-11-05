@@ -5,7 +5,7 @@ export const Container = styled.div`
     justify-content: space-between;
     width: 100%;
     border-bottom: solid 1px var(--light-grey);
-    padding: 10px 0;
+    padding: 15px 0;
     color: var(--light-grey);
     font-family: "Gotham Book";
 

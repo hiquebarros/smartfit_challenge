@@ -4,11 +4,12 @@ import { Container } from "./styles"
 interface IButtonProps {
     children: ReactNode
     styleType: string
+    onClick?: React.MouseEventHandler<HTMLElement>;
 }
 
-const Button = ({children, styleType}:IButtonProps) => {
+const Button = ({children, styleType, onClick}:IButtonProps) => {
     return ( 
-        <Container styleType={styleType}>
+        <Container onClick={onClick} type="button" styleType={styleType}>
             {children}
         </Container>
      );

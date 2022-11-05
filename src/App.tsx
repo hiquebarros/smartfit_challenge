@@ -1,12 +1,18 @@
-import React from 'react';
 import GlobalStyle from "./theme/globalStyles"
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Form from './components/Form';
 import Legend from './components/Legend';
-import { AppText, AppWrapper } from "./styles"
+import { AppText, AppWrapper, CardWrapper } from "./styles"
+import Card from './components/Card';
+import { useContext, useEffect, useState } from "react"
+import { FilterContext } from "./providers/contexts/filterContext";
+
 
 function App() {
+
+  const { filteredData} = useContext(FilterContext);
+
   return (
     <AppWrapper>
       <GlobalStyle />
@@ -20,6 +26,11 @@ function App() {
       </AppText>
       <Form />
       <Legend />
+        <CardWrapper>
+              {filteredData && filteredData.map(item => {
+                return <Card key={Math.random()} data={item} />
+              })}
+        </CardWrapper>
       <Footer />
     </AppWrapper>
   );

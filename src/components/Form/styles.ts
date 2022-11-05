@@ -35,6 +35,7 @@ export const Container = styled.form`
         h3{
             color: var(--light-grey);
             font-family: "Gotham book";
+            font-size: 22px;
         }
     }
     .container-inputs{
