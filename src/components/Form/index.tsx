@@ -2,19 +2,22 @@ import {Container} from "./styles"
 import icon_hour from "../../assets/icons/icon-hour.png"
 import Input from "../Input";
 import Button from "../Button";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FilterContext } from "../../providers/contexts/filterContext";
-import useFilter from "../../hooks/useFilter";
 
 const Form = () => {
+       
+    const { setShiftState, shiftState, showClosed, setShowClosed, fetchData, filteredData, setFilteredData} = useContext(FilterContext);
 
-    const { setShiftState, shiftState, setSearch, showClosed, setShowClosed, setAfternoonGyms, setMorningGyms, setNightgGyms, afternoonGyms } = useContext(FilterContext);
 
     function handleClean(){
-        setSearch(false)
-        setAfternoonGyms([])
-        setMorningGyms([])
-        setNightgGyms([])
+        setFilteredData([])
+        setShiftState('none')
+        setShowClosed(false)
+    }
+
+     function searchFunction(){
+        fetchData()
     }
 
     return ( 
@@ -37,11 +40,11 @@ const Form = () => {
                 <h5>Exibir unidades fechadas</h5>
             </div>
             <div className="result-box">
-                <h5>Resultados encontrados:</h5><h3></h3>
+                <h5>Resultados encontrados:</h5><h3>{filteredData && filteredData.length}</h3>
             </div>
         </div>
         <div className="container-buttons">
-            <Button styleType="1" onClick={() => setSearch(true)}><p>Encontrar unidade</p></Button>
+            <Button styleType="1" onClick={() => searchFunction()}><p>Encontrar unidade</p></Button>
             <Button styleType="2" onClick={() => handleClean()}><p>Limpar</p></Button>
         </div>
     </Container> 

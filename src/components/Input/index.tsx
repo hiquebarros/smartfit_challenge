@@ -6,7 +6,7 @@ interface IInputProps {
     shift: string
     time: string
     shiftState: string | undefined
-    setShiftState: React.Dispatch<React.SetStateAction<string | undefined>>
+    setShiftState: React.Dispatch<React.SetStateAction<string>>
 }
 
 const Input = ({shift, time, setShiftState, shiftState}: IInputProps) => {
