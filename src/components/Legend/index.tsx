@@ -1,4 +1,4 @@
-import { Container, Box } from "./styles"
+import { Container, Box, Content } from "./styles"
 import forbidden_fountain from "../../assets/icons/forbidden-fountain.png"
 import forbidden_lockerroom from "../../assets/icons/forbidden-lockerroom.png"
 import partial_fountain from "../../assets/icons/partial-fountain.png"
@@ -12,43 +12,49 @@ import required_towel from "../../assets/icons/required-towel.png"
 const Legend = () => {
     return (
         <Container>
-            <Box>
-                <div className="box-title">
-                    <h2>Máscara</h2>
-                </div>
-                <div className="box-imgs">
-                    <img src={required_mask}/>
-                    <img src={recommended_mask}/>
-                </div>
-            </Box>
-            <Box>
-                <div className="box-title">
-                    <h2>Toalha</h2>
-                </div>
-                <div className="box-imgs">
-                    <img src={recommended_towel}/>
-                    <img src={required_towel}/>
-                </div>
-            </Box>
-            <Box>
-                <div className="box-title">
-                    <h2>Bebedouro</h2>   
-                </div>
-                <div className="box-imgs">
-                    <img src={partial_fountain}/>
-                    <img src={forbidden_fountain}/>
-                </div>
-            </Box>
-            <Box>
-                <div className="box-title">
-                    <h2>Vestiário</h2>
-                </div>
-                <div className="box-imgs">
-                    <img src={required_lockerroom} />
-                    <img src={partial_lockerroom} />
-                    <img src={forbidden_lockerroom} />
-                </div>
-            </Box>
+            <div className="container-title">
+                <h2>Medidas de segurança</h2>
+            </div>
+            <Content>
+                <Box>
+                    <div className="box-title">
+                        <h2>Máscara</h2>
+                    </div>
+                    <div className="box-imgs">
+                        <img src={required_mask} />
+                        <img src={recommended_mask} />
+                    </div>
+                </Box>
+                <Box>
+                    <div className="box-title">
+                        <h2>Toalha</h2>
+                    </div>
+                    <div className="box-imgs">
+                        <img src={required_towel} />
+                        <img src={recommended_towel} />
+
+                    </div>
+                </Box>
+                <Box>
+                    <div className="box-title">
+                        <h2>Bebedouro</h2>
+                    </div>
+                    <div className="box-imgs">
+                        <img src={partial_fountain} />
+                        <img src={forbidden_fountain} />
+                    </div>
+                </Box>
+                <Box>
+                    <div className="box-title">
+                        <h2>Vestiário</h2>
+                    </div>
+                    <div className="box-imgs">
+                        <img src={required_lockerroom} />
+                        <img src={partial_lockerroom} />
+                        <img src={forbidden_lockerroom} />
+                    </div>
+                </Box>
+            </Content>
         </Container>
     );
 }

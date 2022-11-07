@@ -61,7 +61,7 @@ export const FilterProvider = ({ children }: FilterProviderProps) => {
         })
 
         if(shiftState === "none") {
-            setFilteredData(data)
+            setFilteredData(newData)
         } else {
             if(shiftState === "manhã"){
                 let return1 =  morningGyms.filter(function (item, pos) {

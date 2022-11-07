@@ -1,12 +1,27 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+background-color: var(--whitesmoke);
+gap: 5px;
+margin: 25px 0px;
+.container-title{
+  h2{
+    margin: 20px 0 5px 0px;
+    font-family: "Gotham black";
+    font-size: 18px;
+  }
+}
+`
+
+export const Content = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   width: 100%;
   max-width: 1000px;
-  background-color: var(--whitesmoke);
-  margin: 25px 0px;
   @media (min-width: 500px){
     grid-template-columns: 1fr 1fr;
 }
