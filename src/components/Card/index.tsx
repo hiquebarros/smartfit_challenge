@@ -30,6 +30,14 @@ interface ISchedule {
     data: ILocation
   }
 
+  const formatParagraph = (data: string) => {
+    let stringArray = data.slice(4, -5).split(";")
+    let arr1 = stringArray[0].slice(0, -7) + ";"
+    let arr2 = stringArray[1].replace("<br>", " ") + "."
+
+    return arr1 + arr2
+  }
+
 const Card = ({data}: ICardProps) => {
     
     return (
@@ -37,7 +45,7 @@ const Card = ({data}: ICardProps) => {
             <div className="card-header">
               {data.opened ? (<h5>Aberto</h5>) : (<h5>Fechado</h5>)}
                 <h2>{data.title}</h2>
-                <p>{data.content}</p>
+                <p>{formatParagraph(data.content)}</p>
             </div>
             <div className="card-icons">
             {data.mask == "required" ? (<img src={required_mask}/>) : (<img src={recommended_mask}/>)}
