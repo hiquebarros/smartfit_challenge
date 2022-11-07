@@ -3,15 +3,32 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Form from './components/Form';
 import Legend from './components/Legend';
-import { AppText, AppWrapper, CardWrapper } from "./styles"
+import { AppText, AppWrapper, CardWrapper, PaginationBox } from "./styles"
 import Card from './components/Card';
 import { useContext, useEffect, useState } from "react"
 import { FilterContext } from "./providers/contexts/filterContext";
+import ReactPaginate, { ReactPaginateProps } from "react-paginate";
+import { Pagination } from "./components/Pagination";
+
 
 
 function App() {
 
-  const { filteredData} = useContext(FilterContext);
+  const { filteredData } = useContext(FilterContext);
+
+  const [pageNumber, setPageNumber] = useState(0);
+
+  const usersPerPage = 6;
+  const pagesVisited = pageNumber * usersPerPage;
+
+  const displayUsers = filteredData.slice(pagesVisited, pagesVisited + usersPerPage)
+
+  const pageCount = Math.ceil(filteredData.length / usersPerPage);
+
+  const changePage = ({ selected }: { selected: number }) => {
+    setPageNumber(selected);
+  };
+
 
   return (
     <AppWrapper>
@@ -26,11 +43,15 @@ function App() {
       </AppText>
       <Form />
       <Legend />
-        <CardWrapper>
-              {filteredData && filteredData.map(item => {
-                return <Card key={Math.random()} data={item} />
-              })}
-        </CardWrapper>
+      <CardWrapper>
+        {displayUsers && displayUsers.map(item => {
+          return <Card key={item.id} data={item} />
+        })}
+      </CardWrapper>
+      {filteredData.length > 1 ? (<PaginationBox>
+        <Pagination changePage={changePage} pageCount={pageCount} />
+      </PaginationBox>) : (null)}
+
       <Footer />
     </AppWrapper>
   );
