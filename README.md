@@ -6,7 +6,7 @@
 
 ### O que é o smartfit_challenge?
 
-O smartfit_challenge é um projeto Frontend desenvolvido em React e TypeScript. A aplicação é uma ferramenta de filtragem de academias que consome a API fornecida pelo time da SmartFit. O projeto faz parte da etapa de teste técnico do processo seletivo da empresa.
+O smartfit_challenge é um projeto Frontend desenvolvido em React e TypeScript. A aplicação fornece uma ferramenta de filtragem de academias que consome a API provida pelo time da SmartFit. O projeto faz parte da etapa de teste técnico do processo seletivo da empresa.
 
 ***
 
